@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import { ITemplateVariable } from '~/utils';
+import { getAnimationConfig } from '~/utils/animation';
 import { IHorizontalBarChartConf } from '../type';
 import { getGrid } from './grid';
 import { getLegend } from './legend';
@@ -26,7 +27,12 @@ export function getOption(conf: IHorizontalBarChartConf, data: TPanelData, varia
   // options
   const series = getSeries(conf, yAxisData, valueTypedXAxis, data, labelFormatters, variables, variableValueMap);
 
+  // Calculate element count from series data
+  const elementCount = series.reduce((sum, s) => sum + (s.data?.length ?? 0), 0);
+  const animationConfig = getAnimationConfig(elementCount);
+
   const customOptions = {
+    ...animationConfig,
     xAxis: getXAxes(conf, labelFormatters),
     yAxis: getYAxes(conf, yAxisData),
     series,
