@@ -1,6 +1,7 @@
 import { getLabelOverflowOptionOnAxis } from '~/components/plugins/common-echarts-fields/axis-label-overflow';
 import { defaultEchartsOptions } from '~/styles/default-echarts-options';
 import { ITemplateVariable, formatNumber } from '~/utils';
+import { getAnimationConfig } from '~/utils/animation';
 import { IBoxplotChartConf } from '../type';
 import { getDataset } from './dataset';
 import { getGrid } from './grid';
@@ -49,13 +50,19 @@ interface IGetOption {
 }
 export function getOption({ config, data, variables, t }: IGetOption) {
   const { x_axis, y_axis, reference_lines } = config;
+
   const dataset = getDataset(config, data);
+
+  // Calculate element count from dataset (number of boxes)
+  const elementCount = dataset[0]?.source?.length ?? 0;
+  const animationConfig = getAnimationConfig(elementCount);
 
   const overflowOption = getLabelOverflowOptionOnAxis(x_axis.axisLabel.overflow.on_axis);
   const seriesNames = getSeriesNames(t);
   const series = getSeries(config, dataset).map((s) => ({ ...s, name: _.get(seriesNames, s.name, s.name) }));
 
   return {
+    ...animationConfig,
     dataZoom: getEchartsDataZoomOption(config.dataZoom, 'filter'),
     grid: getGrid(config),
     dataset,

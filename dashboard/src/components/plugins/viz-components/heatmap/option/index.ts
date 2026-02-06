@@ -1,5 +1,8 @@
-import { defaultsDeep } from 'lodash';
-import { ITemplateVariable, formatAggregatedValue, getAggregatedValue } from '~/utils';
+import _ from 'lodash';
+import { getSkipRangeColor, getVisualMap } from '~/components/plugins/common-echarts-fields/visual-map';
+import { formatAggregatedValue, getAggregatedValue, ITemplateVariable, parseDataKey } from '~/utils';
+import { getAnimationConfig } from '~/utils/animation';
+import { SeriesDataItem } from '../render/use-heatmap-series-data';
 import { IHeatmapConf } from '../type';
 import { getLabelFormatters, getValueFormatters } from './formatters';
 import { getGrid } from './grid';
@@ -7,10 +10,6 @@ import { getSeries } from './series';
 import { getTooltip } from './tooltip';
 import { getXAxis } from './x-axis';
 import { getYAxis } from './y-axis';
-import _ from 'lodash';
-import { parseDataKey } from '~/utils';
-import { getSkipRangeColor, getVisualMap } from '~/components/plugins/common-echarts-fields/visual-map';
-import { SeriesDataItem } from '../render/use-heatmap-series-data';
 
 function calcBorderWidth(xlen: number, ylen: number, width: number, height: number) {
   if (width < xlen * 10 || height < ylen * 10) {
@@ -33,6 +32,7 @@ export function getOption(
   if (!conf.x_axis.data_key || !conf.y_axis.data_key || !conf.heat_block.data_key) {
     return {};
   }
+
   const variableValueMap = variables.reduce((prev, variable) => {
     const value = getAggregatedValue(variable, data);
     prev[variable.name] = formatAggregatedValue(variable, value);
@@ -61,7 +61,9 @@ export function getOption(
   });
   const borderWidth = calcBorderWidth(xData.length, yData.length, width, height);
 
+  const animationConfig = getAnimationConfig(_seriesData.length);
   const options = {
+    ...animationConfig,
     xAxis: getXAxis(conf, xData, labelFormatters.x_axis, borderWidth),
     yAxis: getYAxis(conf, labelFormatters.y_axis, borderWidth),
     series: getSeries(conf, _seriesData, borderWidth),

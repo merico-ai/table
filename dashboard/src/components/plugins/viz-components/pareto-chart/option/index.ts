@@ -1,5 +1,6 @@
 import { get, isEmpty } from 'lodash';
 import { ITemplateVariable, parseDataKey } from '~/utils';
+import { getAnimationConfig } from '~/utils/animation';
 import { getEchartsDataZoomOption } from '../../cartesian/editors/echarts-zooming-field/get-echarts-data-zoom-option';
 import { getVariableValueMap } from '../../cartesian/option/utils/variables';
 import { IParetoChartConf } from '../type';
@@ -43,8 +44,12 @@ export function getOption(conf: IParetoChartConf, data: TPanelData, variables: I
     (a, b) => b[1] - a[1],
   ) as BarData;
 
+  // Calculate element count: barData.length * 2 (bar series + line series)
+  const animationConfig = getAnimationConfig(barData.length * 2);
+
   const xAxisData = barData.map((d) => d[0]);
   const option = {
+    ...animationConfig,
     dataZoom: getEchartsDataZoomOption(conf.dataZoom),
     tooltip: getTooltip(conf, formatters),
     xAxis: getXAxis(conf, xAxisData),

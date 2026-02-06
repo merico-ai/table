@@ -1,5 +1,6 @@
 import { defaultsDeep } from 'lodash';
 import { ITemplateVariable } from '~/utils';
+import { getAnimationConfig } from '~/utils/animation';
 import { getEchartsDataZoomOption } from '../editors/echarts-zooming-field/get-echarts-data-zoom-option';
 import { ICartesianChartConf } from '../type';
 import { IAxisLabels } from './get-axis-labels';
@@ -47,7 +48,12 @@ export function getOption(
   const series = getSeries(conf, xAxisLabels, data, labelFormatters, variables, variableValueMap);
   const regressionSeries = getRegressionConfs(conf, data, xAxisLabels);
 
+  // Calculate element count from rendered series data
+  const elementCount = series.reduce((sum, s) => sum + (s.data?.length ?? 0), 0);
+  const animationConfig = getAnimationConfig(elementCount);
+
   const customOptions = {
+    ...animationConfig,
     xAxis: getXAxes(conf, xAxisLabels),
     yAxis: getYAxes(conf, labelFormatters, series),
     series: [...series, ...regressionSeries],

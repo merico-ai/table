@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import { getLabelOverflowOptionOnAxis } from '~/components/plugins/common-echarts-fields/axis-label-overflow';
-import { AnyObject } from '~/types';
 import { IFunnelConf, IFunnelSeriesItem } from '../type';
 import { parseDataKey } from '~/utils';
 
@@ -41,7 +40,12 @@ function getFunnelMargin(s: IFunnelSeriesItem) {
   return ret;
 }
 
-export function getSeries(conf: IFunnelConf, data: TPanelData) {
+export function getSeries(
+  conf: IFunnelConf,
+  data: TPanelData,
+): {
+  data?: SeriesDataType[];
+}[] {
   return conf.series.map((s) => {
     const { level_name_data_key, level_value_data_key, axisLabel, min, max, funnelAlign, orient, ...echartsProps } = s;
     if (!level_name_data_key || !level_value_data_key) {

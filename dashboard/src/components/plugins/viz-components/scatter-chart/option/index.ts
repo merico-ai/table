@@ -1,5 +1,6 @@
 import _, { defaultsDeep } from 'lodash';
 import { ITemplateVariable, extractData, formatAggregatedValue, formatNumber, getAggregatedValue } from '~/utils';
+import { getAnimationConfig } from '~/utils/animation';
 import { getEchartsDataZoomOption } from '../../cartesian/editors/echarts-zooming-field/get-echarts-data-zoom-option';
 import { IYAxisConf } from '../../cartesian/type';
 import { IScatterChartConf } from '../type';
@@ -77,12 +78,18 @@ export function getOption(conf: IScatterChartConf, data: TPanelData, variables: 
   const xAxisData = _.uniq(extractData(data, conf.x_axis.data_key));
 
   const series = getSeries(conf, data, variables, variableValueMap);
+  const dataset = getDataset(conf, data);
+
+  // Calculate element count from dataset source
+  const elementCount = dataset[0]?.source?.length ?? 0;
+  const animationConfig = getAnimationConfig(elementCount);
 
   const customOptions = {
+    ...animationConfig,
     xAxis: getXAxes(conf, xAxisData),
     yAxis: getYAxes(conf, labelFormatters),
     series,
-    dataset: getDataset(conf, data),
+    dataset,
     tooltip: getTooltip(conf, labelFormatters),
     grid: getGrid(conf),
     legend: getLegend(),

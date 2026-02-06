@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import { defaultEchartsOptions } from '~/styles/default-echarts-options';
+import { getAnimationConfig } from '~/utils/animation';
 import { IRadarChartConf } from '../type';
 import { getSeries } from './series';
 import { getTooltipFormatter } from './tooltip';
@@ -49,7 +50,14 @@ export function getOption(conf: IRadarChartConf, data: TPanelData) {
     max,
   }));
 
+  const series = getSeries(data, conf);
+
+  // Calculate element count from series data
+  const elementCount = series.reduce((sum, s) => sum + (s.data?.length ?? 0), 0);
+  const animationConfig = getAnimationConfig(elementCount);
+
   const customOptions = {
+    ...animationConfig,
     radar: {
       indicator,
       splitArea: {
@@ -66,7 +74,7 @@ export function getOption(conf: IRadarChartConf, data: TPanelData) {
       left: 'center',
       type: 'scroll',
     },
-    series: getSeries(data, conf),
+    series,
     color: palette,
   };
 

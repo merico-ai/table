@@ -1,4 +1,5 @@
 import { defaultsDeep } from 'lodash';
+import { getAnimationConfig } from '~/utils/animation';
 import { IMericoEstimationChartConf } from '../type';
 import { getGrids } from './grid';
 import { getSeries } from './series';
@@ -38,7 +39,13 @@ export function getOption(conf: IMericoEstimationChartConf, metricKey: TDataKey,
   const dataGroupedByX = _.groupBy(data, x.columnKey);
   const metric = getMetric(conf, metricKey);
   const series = getSeries(conf, metric, xAxisData, dataGroupedByX);
+
+  // Calculate element count from series data
+  const elementCount = series.reduce((sum, s) => sum + (s.data?.length ?? 0), 0);
+  const animationConfig = getAnimationConfig(elementCount);
+
   const customOptions = {
+    ...animationConfig,
     xAxis: getXAxes(conf, xAxisData),
     yAxis: getYAxes(metric),
     series,

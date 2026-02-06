@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 import _ from 'lodash';
 import { getSkipRangeColor, getVisualMap } from '~/components/plugins/common-echarts-fields/visual-map';
 import { ITemplateVariable, formatAggregatedValue, getAggregatedValue, parseDataKey } from '~/utils';
+import { getAnimationConfig } from '~/utils/animation';
 import { ICalendarHeatmapConf } from '../type';
 import { getCalendar } from './calendar';
 import { getValueFormatters } from './formatters';
@@ -56,10 +57,14 @@ export function getOption(conf: ICalendarHeatmapConf, data: TPanelData, variable
     return ret;
   });
 
+  // Calculate element count from plotData
+  const animationConfig = getAnimationConfig(plotData.length);
+
   const { dateSpan, minDate, dataByYear, years } = getDateStuff(plotData);
   const oneYearMode = dateSpan <= 366;
 
   const options = {
+    ...animationConfig,
     calendar: getCalendar(oneYearMode, minDate, years),
     series: getSeries(oneYearMode, dataByYear, plotData),
     tooltip: getTooltip(conf, data, valueFormatters),

@@ -9,6 +9,7 @@ import { useStorageData } from '~/components/plugins/hooks';
 import { DefaultVizBox, getBoxContentStyle } from '~/styles/viz-box';
 import { VizViewProps } from '~/types/plugin';
 import { extractFullQueryData, parseDataKey } from '~/utils';
+import { getAnimationConfig } from '~/utils/animation';
 import { DEFAULT_CONFIG, IBar3dChartConf } from './type';
 import { notifyVizRendered } from '~/components/plugins/viz-components/viz-instance-api';
 
@@ -49,7 +50,11 @@ export function VizBar3dChart({ context, instance }: VizViewProps) {
   );
   const onRenderFinishedRef = useLatest(handleChartRenderFinished);
 
+  // Calculate animation config based on rendered element count
+  const animationConfig = getAnimationConfig(queryData.length);
+
   const option = {
+    ...animationConfig,
     tooltip: {},
     backgroundColor: '#fff',
     visualMap: {
