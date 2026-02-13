@@ -3,7 +3,7 @@
   "version": "14.60.9",
   "license": "Apache-2.0",
   "repository": {
-    "url": "https://github.com/merico-dev/table"
+    "url": "https://github.com/merico-ai/table"
   },
   "publishConfig": {
     "access": "public",
