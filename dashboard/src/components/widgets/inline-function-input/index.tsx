@@ -51,7 +51,7 @@ export const InlineFunctionInput = forwardRef<HTMLElement, Props>(
         }
         if (!model._hasHighlight) {
           constrainedInstance.toggleDevMode();
-          model.toggleHighlightOfEditableAreas();
+          model.toggleHighlightOfEditableAreas({});
           const currentRanges = model.getCurrentEditableRanges();
           const currentValue = model.getValueInEditableRanges();
           console.debug({ model, currentRanges, currentValue });
