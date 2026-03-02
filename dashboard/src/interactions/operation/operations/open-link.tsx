@@ -35,8 +35,10 @@ function OpenLinkSettings(props: IOperationConfigProps) {
 
   async function updateOpenInTab(val: boolean) {
     setConfig({ ...config, openInNewTab: val });
-    await commit();
   }
+  useEffect(() => {
+    void commit();
+  }, [config.openInNewTab]);
 
   const handleUrlTemplateChange = (ev: ChangeEvent<HTMLInputElement>) =>
     setConfig({
