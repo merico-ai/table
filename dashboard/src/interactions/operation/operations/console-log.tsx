@@ -1,7 +1,7 @@
 import { TextInput } from '@mantine/core';
 import { template } from 'lodash';
 import { useTranslation } from 'react-i18next';
-import { useStorageData } from '~/components/plugins';
+import { useStorageData } from '~/components/plugins/hooks';
 import { IDashboardOperation, IDashboardOperationSchema, IOperationConfigProps } from '~/types/plugin';
 
 export interface IConsoleLogOperationConfig {

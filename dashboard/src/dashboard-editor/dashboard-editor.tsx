@@ -6,7 +6,7 @@ import { observer } from 'mobx-react-lite';
 import React, { ForwardedRef, ReactNode, forwardRef } from 'react';
 import { listDataSources, listGlobalSQLSnippets } from '~/api-caller';
 import { configureAPIClient } from '~/api-caller/request';
-import { PluginContext, createPluginContext } from '~/components/plugins';
+import { PluginContext, createPluginContext } from '~/components/plugins/plugin-context';
 import { ServiceLocatorProvider } from '~/components/plugins/service/service-locator/use-service-locator';
 import { DashboardViewEditor } from '~/components/view';
 

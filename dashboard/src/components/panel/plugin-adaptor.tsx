@@ -5,15 +5,16 @@ import { isEqual } from 'lodash';
 import React, { useContext, useEffect, useState } from 'react';
 import { MigrationResultType, MigrationStatus } from '~/components/plugins/instance-migrator';
 import { useServiceLocator } from '~/components/plugins/service/service-locator/use-service-locator';
-import { LayoutStateContext } from '../..';
+import { LayoutStateContext } from '../../contexts';
 import { AnyObject, IVizConfig } from '../../types';
-import { IPanelInfo, tokens } from '../plugins';
+import { tokens } from '../plugins/tokens';
 import {
   IConfigComponentProps,
   IViewComponentProps,
   VizConfigComponent,
   VizViewComponent,
 } from '../plugins/viz-manager/components';
+import { IPanelInfo } from '../plugins/viz-manager/types';
 
 function usePluginMigration(onMigrate?: () => void) {
   const [migrated, setMigrated] = useState(false);

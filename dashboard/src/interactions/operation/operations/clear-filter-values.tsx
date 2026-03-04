@@ -2,7 +2,7 @@ import { MultiSelect, Stack } from '@mantine/core';
 import { observer } from 'mobx-react-lite';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useStorageData } from '~/components/plugins';
+import { useStorageData } from '~/components/plugins/hooks';
 import { useEditContentModelContext } from '~/contexts';
 import { IDashboardOperation, IDashboardOperationSchema, IOperationConfigProps } from '~/types/plugin';
 

@@ -2,7 +2,7 @@ import { Alert, Mark, Select, ComboboxItem, Stack, Text, TextInput } from '@mant
 import { IconAlertCircle } from '@tabler/icons-react';
 import { defaults, isNumber } from 'lodash';
 import { Trans, useTranslation } from 'react-i18next';
-import { useStorageData } from '~/components/plugins';
+import { useStorageData } from '~/components/plugins/hooks';
 import { ITableConf } from '~/components/plugins/viz-components/table/type';
 import { ITriggerConfigProps, ITriggerSchema, VizInstance } from '~/types/plugin';
 

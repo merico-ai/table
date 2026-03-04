@@ -4,7 +4,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import 'intl-pluralrules';
 import { en } from './en';
 import { zh } from './zh';
-import { vizList } from '~/components/plugins';
+import { vizList } from '~/components/plugins/viz-list';
 
 const i18n = createInstance({
   debug: false,

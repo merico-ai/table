@@ -1,4 +1,4 @@
-import { IPanelInfo } from '~/components/plugins';
+import { IPanelInfo } from '~/components/plugins/viz-manager';
 import { VizInstance } from '~/types/plugin';
 
 /**

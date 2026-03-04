@@ -2,7 +2,8 @@ import { Stack, Switch, TextInput } from '@mantine/core';
 import { defaults } from 'lodash';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useStorageData, VersionBasedMigrator } from '~/components/plugins';
+import { useStorageData } from '~/components/plugins/hooks';
+import { VersionBasedMigrator } from '~/components/plugins/plugin-data-migrator';
 import { IDashboardOperation, IDashboardOperationSchema, IOperationConfigProps } from '~/types/plugin';
 
 export interface IOpenLinkOperationConfig {

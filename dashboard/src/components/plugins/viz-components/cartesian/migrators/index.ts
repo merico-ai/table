@@ -1,6 +1,6 @@
 import { random } from 'chroma-js';
 import _, { cloneDeep, omit } from 'lodash';
-import { IMigrationEnv } from '~/components/plugins';
+import { IMigrationEnv } from '~/components/plugins/plugin-data-migrator';
 import { getDefaultXAxisLabelFormatter } from '~/components/plugins/common-echarts-fields/x-axis-label-formatter';
 import { PanelModelInstance } from '~/dashboard-editor';
 import { AnyObject } from '~/types';

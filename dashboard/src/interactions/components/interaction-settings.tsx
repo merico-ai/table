@@ -7,7 +7,8 @@ import { observer } from 'mobx-react-lite';
 import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { IPanelInfo, IVizManager, PluginContext } from '~/components/plugins';
+import { IPanelInfo, IVizManager } from '~/components/plugins/viz-manager';
+import { PluginContext } from '~/components/plugins/plugin-context';
 import { useRenderPanelContext } from '~/contexts';
 import { OperationSelect } from '~/interactions/components/operation-select';
 import { useTriggerConfigModel } from '~/interactions/components/trigger-config-model';

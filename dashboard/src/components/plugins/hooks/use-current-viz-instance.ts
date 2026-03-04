@@ -1,6 +1,7 @@
 import { useCreation } from 'ahooks';
 import { useContext } from 'react';
-import { IPanelInfo, PluginContext } from '~/components/plugins';
+import { IPanelInfo } from '~/components/plugins/viz-manager';
+import { PluginContext } from '~/components/plugins/plugin-context';
 import { useRenderPanelContext } from '~/contexts';
 
 export const useCurrentVizInstance = () => {

@@ -1,7 +1,7 @@
 import { IServiceLocator } from '~/components/plugins/service/service-locator';
 import { IVizOperationManager, IVizTriggerManager, VizInstance } from '~/types/plugin';
 
-import { tokens } from '../plugin-context';
+import { tokens } from '../tokens';
 import { IVizManager } from '../viz-manager';
 import { PanelModelInstance } from '~/dashboard-editor/model/panels';
 

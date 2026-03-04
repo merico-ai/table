@@ -4,7 +4,7 @@ import { IconDeviceFloppy } from '@tabler/icons-react';
 import { observer } from 'mobx-react-lite';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useStorageData } from '~/components/plugins';
+import { useStorageData } from '~/components/plugins/hooks';
 import { useEditContentModelContext } from '~/contexts';
 import { IDashboardOperation, IDashboardOperationSchema, IOperationConfigProps } from '~/types/plugin';
 

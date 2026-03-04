@@ -13,8 +13,7 @@ import {
   VizInstance,
 } from '~/types/plugin';
 import { AttachmentInstanceManager } from '../attachment-instance-manager';
-
-export const TRIGGERS_KEY = '__TRIGGERS';
+import { TRIGGERS_KEY } from './constant';
 
 export class VizTriggerManager implements IVizTriggerManager {
   protected attachments: AttachmentInstanceManager<ITrigger>;

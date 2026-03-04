@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
-import { useStorageData } from '~/components/plugins';
+import { useStorageData } from '~/components/plugins/hooks';
 import { VizConfigProps } from '~/types/plugin';
 import { VizConfigBanner } from '../../../editor-components';
 import { DEFAULT_CONFIG, IVizDashboardStateConf } from '../type';

@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { IMigrationEnv } from '~/components/plugins';
+import { IMigrationEnv } from '~/components/plugins/plugin-data-migrator';
 import { getDefaultAxisLabelOverflow } from '~/components/plugins/common-echarts-fields/axis-label-overflow';
 import { getDefaultXAxisLabelFormatter } from '~/components/plugins/common-echarts-fields/x-axis-label-formatter';
 import { defaultNumberFormat } from '~/utils';

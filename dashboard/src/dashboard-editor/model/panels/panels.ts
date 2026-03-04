@@ -2,7 +2,7 @@ import { Instance, castToSnapshot, getRoot, types } from 'mobx-state-tree';
 import { NavOptionType } from '~/dashboard-editor/model/editor';
 import { PanelsRenderModel } from '~/model';
 import { PanelModel, PanelModelInstance, PanelModelSnapshotIn } from './panel';
-import { vizNameToKeys } from '~/components/plugins';
+import { vizNameToKeys } from '~/components/plugins/viz-list';
 
 export const PanelsModel = types
   .compose(

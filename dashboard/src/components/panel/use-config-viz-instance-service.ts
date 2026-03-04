@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
-import { IPanelInfo, tokens } from '~/components/plugins';
+import { IPanelInfo } from '~/components/plugins/viz-manager';
+import { tokens } from '~/components/plugins/tokens';
 import { InstanceMigrator } from '~/components/plugins/instance-migrator';
 import { IServiceLocator } from '~/components/plugins/service/service-locator';
 import { useRenderPanelContext } from '~/contexts';

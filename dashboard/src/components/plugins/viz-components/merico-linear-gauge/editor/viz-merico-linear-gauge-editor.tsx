@@ -5,7 +5,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { DataFieldSelector } from '~/components/panel/settings/common/data-field-selector';
 import { NumbroFormatSelector } from '~/components/panel/settings/common/numbro-format-selector';
-import { useStorageData } from '~/components/plugins';
+import { useStorageData } from '~/components/plugins/hooks';
 import { RichTextEditorModal } from '~/components/widgets';
 import { VizConfigProps } from '~/types/plugin';
 import { VizConfigBanner } from '../../../editor-components';

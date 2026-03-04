@@ -4,7 +4,7 @@ import { useBoolean } from 'ahooks';
 import { toJS } from 'mobx';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { IColorManager } from '~/components/plugins';
+import { IColorManager } from '~/components/plugins/color-manager';
 
 import { IColorInterpolationConfig, IValueStep } from '~/types/plugin';
 import { ColorMappingEditor } from '../color-mapping-editor';

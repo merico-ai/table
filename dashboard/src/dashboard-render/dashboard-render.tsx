@@ -6,7 +6,7 @@ import { noop } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { listDataSources, listGlobalSQLSnippets } from '~/api-caller';
-import { createPluginContext, PluginContext } from '~/components/plugins';
+import { createPluginContext, PluginContext } from '~/components/plugins/plugin-context';
 import { ServiceLocatorProvider } from '~/components/plugins/service/service-locator/use-service-locator';
 import { DashboardViewRender } from '~/components/view';
 import {
