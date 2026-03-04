@@ -145,6 +145,7 @@ export interface IPluginManifest {
   viz: VizComponent[];
   color: IColorPaletteItem[];
   panelAddon?: IPanelAddon[];
+  operations?: IDashboardOperationSchema[];
 }
 
 export interface IDashboardPlugin {

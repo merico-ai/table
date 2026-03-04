@@ -16,6 +16,8 @@ import {
 } from '~/types/plugin';
 import * as PACKAGE from '../../../package.json';
 import { ColorManager, IColorManager } from './color-manager';
+import { OperationManager, IOperationManager } from './operation-manager';
+import { OPERATIONS } from '~/interactions/operation/operations';
 import { PluginManager } from './plugin-manager';
 import { Bar3dChartVizComponent } from './viz-components/bar-3d-chart';
 import { BoxplotChartVizComponent } from './viz-components/boxplot-chart';
@@ -49,6 +51,7 @@ export interface IPluginContextProps {
   vizManager: VizManager;
   colorManager: IColorManager;
   panelAddonManager: PanelAddonManager;
+  operationManager: IOperationManager;
 }
 
 const basicColors = [
@@ -164,6 +167,7 @@ const BuiltInPlugin: () => IDashboardPlugin = () => ({
   manifest: {
     viz: vizList,
     color: [...basicColors, ...colorInterpolations],
+    operations: OPERATIONS,
   },
 });
 
@@ -178,6 +182,7 @@ export const tokens = {
   vizManager: token<VizManager>('vizManager'),
   colorManager: token<IColorManager>('colorManager'),
   panelAddonManager: token<PanelAddonManager>('panelAddonManager'),
+  operationManager: token<IOperationManager>('operationManager'),
   instanceScope: {
     panelModel: token<PanelModelInstance>('panelModel'),
     vizInstance: token<VizInstance>('vizInstance'),
@@ -198,7 +203,8 @@ export const createPluginContext = (): IPluginContextProps => {
   const vizManager = new VizManager(pluginManager);
   const colorManager = new ColorManager(pluginManager);
   const panelAddonManager = new PanelAddonManager(pluginManager);
-  return { pluginManager, vizManager, colorManager, panelAddonManager };
+  const operationManager = new OperationManager(pluginManager);
+  return { pluginManager, vizManager, colorManager, panelAddonManager, operationManager };
 };
 
 export const PluginContext = createContext<IPluginContextProps>(createPluginContext());

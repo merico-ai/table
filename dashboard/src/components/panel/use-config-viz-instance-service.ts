@@ -3,7 +3,7 @@ import { IPanelInfo, tokens } from '~/components/plugins';
 import { InstanceMigrator } from '~/components/plugins/instance-migrator';
 import { IServiceLocator } from '~/components/plugins/service/service-locator';
 import { useRenderPanelContext } from '~/contexts';
-import { InteractionManager, OPERATIONS } from '~/interactions';
+import { InteractionManager } from '~/interactions';
 import { NullInteractionManager } from '~/interactions/null-interaction-manager';
 
 export function useConfigVizInstanceService(panel: IPanelInfo, withInteraction = true) {
@@ -19,7 +19,9 @@ export function useConfigVizInstanceService(panel: IPanelInfo, withInteraction =
         .provideFactory(tokens.instanceScope.interactionManager, (services) => {
           const instance = services.getRequired(tokens.instanceScope.vizInstance);
           if (withInteraction) {
-            return new InteractionManager(instance, component, OPERATIONS);
+            const operationManager = services.getRequired(tokens.operationManager);
+            const operations = operationManager.getAllOperations();
+            return new InteractionManager(instance, component, operations);
           } else {
             return new NullInteractionManager();
           }

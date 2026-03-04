@@ -13,7 +13,6 @@ import { OperationSelect } from '~/interactions/components/operation-select';
 import { useTriggerConfigModel } from '~/interactions/components/trigger-config-model';
 import { TriggerSelect } from '~/interactions/components/trigger-select';
 import { InteractionManager } from '~/interactions/interaction-manager';
-import { OPERATIONS } from '~/interactions/operation/operations';
 import { IPayloadVariableSchema, IVizInteraction, IVizInteractionManager, VizInstance } from '~/types/plugin';
 
 export interface IInteractionSettingsProps {
@@ -136,12 +135,13 @@ export const InteractionSettings = (props: IInteractionSettingsProps) => {
 const useInteractionSettingsProps = (): IInteractionSettingsProps => {
   const { panel, data } = useRenderPanelContext();
   const viz = panel.viz;
-  const { vizManager } = useContext(PluginContext);
+  const { vizManager, operationManager } = useContext(PluginContext);
   const panelInfo: IPanelInfo = panel.json;
   const instance = useCreation(() => vizManager.getOrCreateInstance(panelInfo), [vizManager, panelInfo]);
+  const operations = useCreation(() => operationManager.getAllOperations(), [operationManager]);
   const interactionManager = useCreation(
-    () => new InteractionManager(instance, vizManager.resolveComponent(viz.type), OPERATIONS),
-    [instance, viz.type],
+    () => new InteractionManager(instance, vizManager.resolveComponent(viz.type), operations),
+    [instance, viz.type, operations],
   );
   useEffect(() => {
     return instance.instanceData.watchItem(
