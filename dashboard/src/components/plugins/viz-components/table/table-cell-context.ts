@@ -4,7 +4,7 @@ import { MultiStepValueMapper } from '~/components/plugins/color-manager/multi-s
 import { ClickCellContent } from '~/components/plugins/viz-components/table/triggers/click-cell-content';
 import { AnyObject } from '~/types';
 import { ITriggerSnapshot, IVizInteractionManager } from '~/types/plugin';
-import { IColorManager } from '../..';
+import { IColorManager } from '../../color-manager';
 import { IColumnConf, ITableCellContext, TriggerConfigType } from './type';
 
 export class TableCellContext implements ITableCellContext {

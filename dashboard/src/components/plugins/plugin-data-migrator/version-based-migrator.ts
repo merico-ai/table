@@ -1,6 +1,6 @@
 import { get } from 'lodash';
-import { IConfigMigrationContext, IConfigMigrationExecContext, IPanelScopeConfigMigrator } from '~/types/plugin';
-import { IMigration, PluginDataMigrator } from './plugin-data-migrator';
+import type { IConfigMigrationContext, IConfigMigrationExecContext, IPanelScopeConfigMigrator } from '~/types/plugin';
+import { type IMigration, PluginDataMigrator } from './plugin-data-migrator';
 
 /**
  * Instance version is read from the `instanceData.version` field.

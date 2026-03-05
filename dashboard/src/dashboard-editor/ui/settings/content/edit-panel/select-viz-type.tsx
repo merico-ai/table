@@ -6,7 +6,7 @@ import { observer } from 'mobx-react-lite';
 import { useContext, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { PluginContext } from '~/components/plugins';
+import { PluginContext } from '~/components/plugins/plugin-context';
 
 function useVizSelectData() {
   const { t } = useTranslation();

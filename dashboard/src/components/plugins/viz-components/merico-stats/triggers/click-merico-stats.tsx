@@ -1,7 +1,7 @@
 import { Text, TextInput } from '@mantine/core';
 import { defaults } from 'lodash';
 import { useTranslation } from 'react-i18next';
-import { useStorageData } from '~/components/plugins';
+import { useStorageData } from '~/components/plugins/hooks';
 import { ITriggerConfigProps, ITriggerSchema } from '~/types/plugin';
 
 export const ClickMericoStats: ITriggerSchema = {

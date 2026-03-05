@@ -5,7 +5,8 @@ import { useCurrentInteractionManager } from '~/interactions/hooks/use-current-i
 import { useTriggerSnapshotList } from '~/interactions/hooks/use-watch-triggers';
 import { AnyObject } from '~/types';
 import { VizInstance } from '~/types/plugin';
-import { IVizManager, PluginContext } from '../../..';
+import { IVizManager } from '../../../viz-manager';
+import { PluginContext } from '../../../plugin-context';
 import { TableCellContext } from '../table-cell-context';
 import { TriggerConfigType } from '../type';
 

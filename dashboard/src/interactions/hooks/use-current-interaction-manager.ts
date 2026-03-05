@@ -1,4 +1,5 @@
-import { IVizManager, tokens } from '~/components/plugins';
+import { IVizManager } from '~/components/plugins/viz-manager';
+import { tokens } from '~/components/plugins/tokens';
 import { IVizInteractionManager, VizInstance } from '~/types/plugin';
 import { useServiceLocator } from '~/components/plugins/service/service-locator/use-service-locator';
 

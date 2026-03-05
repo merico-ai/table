@@ -2,7 +2,8 @@ import { Stack } from '@mantine/core';
 import { useLatest } from 'ahooks';
 import { isObject, isString } from 'lodash';
 import { forwardRef, useContext, useState } from 'react';
-import { IColorManager, PluginContext } from '~/components/plugins';
+import { IColorManager } from '~/components/plugins/color-manager';
+import { PluginContext } from '~/components/plugins/plugin-context';
 import { CellBackgroundColorType } from '~/components/plugins/viz-components/table/type';
 
 import { useTranslation } from 'react-i18next';

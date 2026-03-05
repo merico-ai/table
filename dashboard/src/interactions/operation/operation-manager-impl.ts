@@ -1,5 +1,5 @@
 import { SubTreeJsonPluginStorage } from '~/components/plugins/sub-tree-json-plugin-storage';
-import {
+import type {
   IConfigMigrationContext,
   IDashboardOperation,
   IDashboardOperationSchema,
@@ -8,12 +8,11 @@ import {
   VizInstance,
 } from '~/types/plugin';
 import { AttachmentInstanceManager } from '../attachment-instance-manager';
-import { OPERATIONS } from './operations';
 
 export class OperationManager implements IVizOperationManager {
   protected attachments: AttachmentInstanceManager<IDashboardOperation>;
 
-  constructor(instance: VizInstance, protected operations: IDashboardOperationSchema[] = OPERATIONS) {
+  constructor(instance: VizInstance, protected operations: IDashboardOperationSchema[]) {
     const constructInstance = async (storage: PluginStorage) => {
       const { id, schemaRef } = await storage.getItem<Omit<IDashboardOperation, 'operationData'>>(null);
       return {

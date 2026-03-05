@@ -1,7 +1,8 @@
 import { Group, Select, Text, SelectProps } from '@mantine/core';
 import { observer } from 'mobx-react-lite';
 import { useTranslation } from 'react-i18next';
-import { useStorageData, vizNameToKeys } from '~/components/plugins';
+import { useStorageData } from '~/components/plugins/hooks';
+import { vizNameToKeys } from '~/components/plugins/viz-list';
 import { useEditContentModelContext } from '~/contexts';
 import { IDashboardOperation, IDashboardOperationSchema, IOperationConfigProps } from '~/types/plugin';
 import { getSelectChangeHandler } from '~/utils/mantine';

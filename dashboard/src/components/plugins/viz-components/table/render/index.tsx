@@ -1,11 +1,10 @@
 import { Text } from '@mantine/core';
-import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRenderPanelContext } from '~/contexts';
 import { VizInstance, VizViewContext, VizViewProps } from '~/types/plugin';
-import { useStorageData } from '../../..';
 import { ITableConf } from '../type';
 import { VizTableComponent } from './viz-table-component';
+import { useStorageData } from '~/components/plugins/hooks';
 
 function EmptyMessage() {
   const { t } = useTranslation();

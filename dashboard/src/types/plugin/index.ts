@@ -1,6 +1,6 @@
 import { EventEmitter2 } from 'eventemitter2';
 import React from 'react';
-import { IVizManager } from '~/components/plugins';
+import { IVizManager } from '~/components/plugins/viz-manager';
 import { PanelModelInstance } from '~/dashboard-editor/model/panels';
 import { AnyObject } from '~/types';
 import { ITemplateVariable } from '~/utils';
@@ -145,6 +145,7 @@ export interface IPluginManifest {
   viz: VizComponent[];
   color: IColorPaletteItem[];
   panelAddon?: IPanelAddon[];
+  operations?: IDashboardOperationSchema[];
 }
 
 export interface IDashboardPlugin {

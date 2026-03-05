@@ -1,5 +1,5 @@
 import { VizViewProps } from '~/types/plugin';
-import { useStorageData } from '~/components/plugins';
+import { useStorageData } from '~/components/plugins/hooks';
 import { getDefaultConfig, IMericoLinearGaugeConf } from '../type';
 import { useMemo, useState } from 'react';
 import { defaults } from 'lodash';

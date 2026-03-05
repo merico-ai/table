@@ -10,7 +10,7 @@ import {
 } from '@tabler/icons-react';
 import _ from 'lodash';
 import { Instance, getRoot, types } from 'mobx-state-tree';
-import { VizNameKeys } from '~/components/plugins';
+import { VizNameKeys } from '~/components/plugins/viz-manager';
 import { isPanel } from '~/dashboard-editor/ui/settings/content/utils';
 import { ContentModelInstance } from '../content';
 

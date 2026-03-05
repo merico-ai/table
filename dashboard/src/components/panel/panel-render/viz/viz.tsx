@@ -10,16 +10,17 @@ import {
   ServiceLocatorProvider,
   useServiceLocator,
 } from '~/components/plugins/service/service-locator/use-service-locator';
-import { WidthAndHeight } from '~/components/plugins/viz-manager/components';
+import { IViewPanelInfo, WidthAndHeight } from '~/components/plugins/viz-manager/components';
 import { ErrorBoundary } from '~/utils';
 import { usePanelAddonSlot } from '~/components/plugins/panel-addon';
 import { LayoutStateContext, useRenderPanelContext } from '../../../../contexts';
-import { IViewPanelInfo, PluginContext, tokens } from '../../../plugins';
+import { tokens } from '../../../plugins/tokens';
 import { usePanelVizFeatures } from '../panel-viz-features';
 import { PluginVizViewComponent } from '../../plugin-adaptor';
 import './viz.css';
 import { VizInstance } from '~/types/plugin';
 import { EChartsOption } from 'echarts';
+import { PluginContext } from '~/components/plugins/plugin-context';
 
 function usePluginViz(data: TPanelData, measure: WidthAndHeight): ReactNode | null {
   const { vizManager } = useContext(PluginContext);

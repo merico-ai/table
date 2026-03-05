@@ -1,6 +1,6 @@
 import { Group } from '@mantine/core';
 import { observer } from 'mobx-react-lite';
-import { useStorageData } from '~/components/plugins';
+import { useStorageData } from '~/components/plugins/hooks';
 import { VizViewProps } from '~/types/plugin';
 import { IVizDashboardStateConf } from '../type';
 import { StateItems } from './state-items';

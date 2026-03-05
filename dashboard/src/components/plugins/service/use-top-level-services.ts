@@ -1,5 +1,6 @@
 import React from 'react';
-import { IPluginContextProps, tokens } from '~/components/plugins';
+import { IPluginContextProps } from '~/components/plugins/plugin-context';
+import { tokens } from '~/components/plugins/tokens';
 import { IServiceLocator } from '~/components/plugins/service/service-locator';
 
 export function useTopLevelServices(pluginContext: IPluginContextProps) {
@@ -9,7 +10,8 @@ export function useTopLevelServices(pluginContext: IPluginContextProps) {
         .provideValue(tokens.pluginManager, pluginContext.pluginManager)
         .provideValue(tokens.vizManager, pluginContext.vizManager)
         .provideValue(tokens.panelAddonManager, pluginContext.panelAddonManager)
-        .provideValue(tokens.colorManager, pluginContext.colorManager);
+        .provideValue(tokens.colorManager, pluginContext.colorManager)
+        .provideValue(tokens.operationManager, pluginContext.operationManager);
     },
     [pluginContext],
   );

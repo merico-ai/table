@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
 import './i18n';
 import './init-dayjs';
+import { BuiltInPlugin } from './components/plugins/built-in-plugin';
+import { pluginManager } from './components/plugins/plugin-context';
 
 export const getVersion = () =>
   import('../package.json').then(({ version }) => {
@@ -37,13 +39,27 @@ export interface IDashboardConfig {
   renderSearchButton?: (props: RenderSearchButtonProps) => ReactNode;
 }
 
-export {
-  notifyVizRendered,
-  onVizRendered,
-  pluginManager,
-  tokens as pluginServices,
-  useServiceLocator,
-} from './components/plugins';
-export type * from './components/plugins';
-export type { IServiceLocator } from './components/plugins';
-export { type IPanelAddon, type IPanelAddonRenderProps } from './types/plugin';
+export { notifyVizRendered, onVizRendered } from './components/plugins/viz-components/viz-instance-api';
+export { tokens as pluginServices } from './components/plugins/tokens';
+export { useServiceLocator } from './components/plugins/service/service-locator/use-service-locator';
+export { useStorageData } from './components/plugins/hooks';
+export { VersionBasedMigrator, PluginDataMigrator } from './components/plugins/plugin-data-migrator';
+export type { IServiceLocator, IDisposable } from './components/plugins/service/service-locator';
+export type { IColorManager } from './components/plugins/color-manager';
+export type { IOperationManager } from './components/plugins/operation-manager';
+export type { IPanelInfo, IVizManager } from './components/plugins/viz-manager';
+export type { IPluginContextProps } from './components/plugins/plugin-context';
+export type { IViewComponentProps, IViewPanelInfo } from './components/plugins/viz-manager';
+export type {
+  IInitialMigrationRet,
+  IMigration,
+  IMigrationData,
+  IMigrationEnv,
+} from './components/plugins/plugin-data-migrator';
+export type * from './types/plugin';
+export { pluginManager };
+try {
+  pluginManager.install(BuiltInPlugin());
+} catch (e) {
+  // ignore
+}
