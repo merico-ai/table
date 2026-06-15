@@ -1,6 +1,8 @@
 import type { Monaco } from '@monaco-editor/react';
 import _ from 'lodash';
 
+let sqlLanguageConfigured = false;
+
 function defineSQLTheme(monaco: Monaco) {
   const legend = {
     tokenTypes: ['global_sql_snippets', 'sql_snippets', 'context', 'filters', '$'],
@@ -109,7 +111,13 @@ function registerCompletion(monaco: Monaco) {
     },
   });
 }
+
 export function configureSQLLanguage(monaco: Monaco) {
+  if (sqlLanguageConfigured) {
+    return;
+  }
+
   registerCompletion(monaco);
   defineSQLTheme(monaco);
+  sqlLanguageConfigured = true;
 }
