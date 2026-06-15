@@ -19,6 +19,7 @@ export * from './dashboard-editor';
 export * from './dashboard-render';
 export * from './model';
 export * from './types';
+export * from './utils/configure-monaco-editor';
 export type { AnyObject } from './types/utils';
 
 export type OnFiltersSubmit = (props?: { force?: boolean }) => void;
